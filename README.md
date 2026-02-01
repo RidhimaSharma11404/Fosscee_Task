@@ -1,79 +1,97 @@
-## Chemical Equipment Visualizer
-A full-stack web application for analyzing and visualizing operational data from chemical plant equipment. The system processes CSV datasets and provides automated insights such as system health, risk alerts, and performance trends.
+## Chemical Equipment Parameter Visualizer : Hybrid Web + Desktop Application
+1.A full-stack data visualization system for analyzing and monitoring chemical equipment parameters from CSV datasets. The platform processes operational data and generates automated insights including health scores, risk alerts, and historical trends.
+2.This project was built as part of a technical screening task to demonstrate real-world software engineering practices, including API design, frontend integration, data analytics, and desktop UI development.
 
-## Features
-Upload CSV files containing equipment data
-Automatic data analysis and summary generation
-Equipment health scoring
-Trend detection based on upload history
-Real-time alerts for unsafe conditions
-Historical data tracking
-Interactive React dashboard
-Desktop application (PyQt) version
+## Key Capabilities
+## Data Handling
+-CSV upload and parsing using Pandas
+-Automatic validation of required columns
+-Summary statistics computation
+## Analytics
+-Equipment health scoring
+-Safe-range violation detection
+-Alert generation
+-Trend analysis across uploads
+## Visualization
+-Interactive React dashboard
+-Desktop PyQt application
+-Charts using Chart.js and Matplotlib
+## System Features
+-REST API (Django REST Framework)
+-Authentication using environment variables
+-PDF report generation
+-Upload history tracking
+## Architecture Overview
+
+Frontend (Web) ───────┐
+                      ├── Django REST API ─── SQLite DB
+Desktop (PyQt) ───────┘
+Both the web and desktop clients consume the same backend API, ensuring consistency across platforms.
 
 ## Tech Stack
 ## Backend
 Python
 Django
 Django REST Framework
-SQLite
 Pandas
+SQLite
 
-## Frontend
+## Web Frontend
 React
+JavaScript
 Fetch API
 CSS
-Desktop App
+Desktop Client
 Python
 PyQt5
+Matplotlib
 
-## Setup Instructions
-1. Clone the repository
-git clone https://github.com/your-username/chemical-equipment-visualizer.git
-cd chemical-equipment-visualizer
+## Project Structure
+chemical-equipment-visualizer/
+│
+├── backend/
+│   ├── api/                # Core API logic
+│   ├── desktop-app/        # PyQt desktop client
+│   ├── backend/            # Django settings
+│   └── manage.py
+│
+└── web-frontend/
+    ├── src/
+    │   ├── components/
+    │   ├── pages/
+    │   └── services/
+    └── package.json
+
+## Setup Guide
+1. Clone Repository
+   git clone <repository-url>
+   cd chemical-equipment-visualizer
 
 ## Backend Setup
-Create virtual environment
-python -m venv venv
-venv\Scripts\activate
+1.Create virtual environment
+  python -m venv venv
+  venv\Scripts\activate
+2.Install dependencies
+  pip install -r requirements.txt
+3.Run migrations
+ cd backend
+ python manage.py migrate
+4.Create admin user
+ python manage.py createsuperuser
+5.Start server
+ python manage.py runserver
 
-## Install dependencies
-pip install -r requirements.txt
+API available at:
+http://127.0.0.1:8000/api
 
-## Run migrations
-cd backend
-python manage.py migrate
-
-## Create admin user
-python manage.py createsuperuser
-
-## Start backend server
-python manage.py runserver
-
-## Backend runs at:
-
-http://127.0.0.1:8000
-
-## Frontend Setup
+## Web Frontend
 cd backend/web-frontend
 npm install
 npm start
 
-## Frontend runs at:
+Frontend runs at:
 http://localhost:3000
 
 ## Desktop Application
 cd backend/desktop-app
 python app.py
-
-## Future Improvements
-Predictive failure analysis
-Machine learning risk scoring
-Role-based authentication
-Cloud deployment
-Real-time monitoring
-
-## Author
-Ridhima
-Chemical Equipment Visualizer
-Full-stack engineering project
